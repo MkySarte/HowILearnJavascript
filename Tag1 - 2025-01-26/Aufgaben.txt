@@ -1,0 +1,32 @@
+Tag 1: Grundlagen und erste Schritte in JavaScript
+Lernziele:
+Die Unterschiede zwischen var, let und const in der Praxis verstehen.
+JavaScript-Syntax und grundlegende Strukturen auffrischen.
+Einfache Ausgaben im Browser über die Konsole und das DOM.
+Aufgaben:
+Variablen und Datentypen:
+
+Schreibe ein JavaScript-Skript, das folgende Variablen definiert:
+Eine Konstante für den Wert von Pi.
+Eine Variable für deinen Namen.
+Eine Variable für dein Alter.
+Gib alle Variablen mit console.log() aus.
+Teste den Unterschied zwischen let und var in einer Funktion (z. B. durch eine Schleife).
+Ziel: Unterschiede in der Nutzung erkennen und verstehen, warum let und const bevorzugt werden.
+
+Erste Interaktion mit HTML (DOM):
+
+Erstelle eine HTML-Datei mit einem Button (<button>Click me</button>).
+Nutze JavaScript, um:
+Den Button auszuwählen (z. B. mit document.querySelector).
+Einen click-Eventlistener hinzuzufügen, der eine Nachricht in der Konsole ausgibt (z. B. "Button wurde geklickt!").
+Ziel: Erste Schritte mit DOM-Manipulation und Eventhandling machen.
+
+Mini-Aufgabe:
+
+Schreibe ein JavaScript-Skript, das in der Konsole ausgibt:
+Eine Begrüßung mit deinem Namen.
+Die aktuelle Uhrzeit.
+Den Text: "JavaScript lernen macht Spaß!"
+Hinweis: Nutze new Date() für die Uhrzeit.
+

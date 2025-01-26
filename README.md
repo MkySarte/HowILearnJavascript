@@ -1,2 +1,4 @@
 # HowILearnJavascript
-I want to learn Javascript, with ChatGPT.
+Ich werde das auf deutsch machen hier.
+
+Ich werde JavaScript Lernen mit ChatGpt.
