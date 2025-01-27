@@ -1,0 +1,288 @@
+#My CheatSheet
+
+
+** hier werden meine lösungen stehen, meine erarbeiten recherchen..
+sollte ich auf das selbse Problem nocheinaml treffen wie zuvor dann werde ich hier einfach nachschauen können, um mein problem zu lösen. es wird nicht komplett sein wie eine variable initialisieren es dient mir nur als leitfaden**
+
+mit eventListener durch 'click' und event den value vom input in h1 einfügen
+
+btnEl.addEventListener('click', (e) => {
+    let name = document.querySelector('Input').value;
+    document.querySelector('h1').innerText = `Hallo, ${name}!`;
+})
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DOM-Manipulation:
+sollten wir einen Element hinzufügen wollen, dann erstmal auswählen wo wir das hinzufüggen wollen
+-> const bodyEl = document.body //hier haben wie bodyEL gesagt du bist jetzt body
+
+append() --> kann man alles anhängen auch String
+appendChild() --> <div> <p> <li> <ul> etc
+body.append("Hallo") // hier sagen wie body hänge diesen string an man kann uahc mehrere machen mit , trennen!!!!
+body.appendChild(<div></div>) // hier sagen dir hänge diesen div an && nur eine Element 
+
+createElement() --> erstellt verschiedene Elemente 
+const divEl = document.createElement('div') // divEl du erstellst ein <div></div>
+
+body.append(divEl) --> also erstellt hängt er eine div im Body an
+body.appendChild(divEl) --> das gleiche hier 
+
+wie erstellt man dann ein text in dem div ? && was sit der unterschied zwischen innerText und textContent?
+div.innerText = "Was geht ab!" ---> hier zeigt er an was wir auch auf unsere seite sehen würden
+div.textContent = "Was geht ab!" --> hier zeigt alles an auch wenn es verstekct ist den ganzen INHALt er zeigt das so wie man das in HTML geschrieben hat
+
+div.innerHTML = "<strong>Was geht ab!</strong>" --> hier kann man auch formatierung wie in HTML machen // aber nicht zu empfehlen weil dann können die hier sachen verändern also der user also wie machen wir das anders
+--> const strongEl = document.createElement('strong')
+    strong.innerText = "Was geht ab!!"
+    div.append(strong)
+
+remove() // um sachen zu löschen
+strong.remove() // so löscht man dann strong dann || es gibt noch removeChild()
+
+.getAttribute("id", hallo)(was für ein atribut, und wie du es bennen möchtest)
+.setAttribute("id", hallo)(was für ein atribut, und wie du es bennen möchtest)
+.removeAttribute("id")(löscht es)
+
+toggle() //wenn es noch nciht da ist dann erstelle es wenn schon da ist dann lösch es mit boolean kann man es ergänzen
+
+.style() css in camelCase dann wie backgroundColor = ...
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+"Einfache Speicherarten":
+                    cookies                     LocalStorage        SessionStorage
+capacity:           4kb                         10mb                5mb
+HTML:               4/5                         5                   5
+Expires:            Manual                      never               SameTab
+StorageLocation:    Browser & Server            Browser             OnTabOnly
+sentRequest         yes                         No                  No
+
+
+localStorage
+die parameter die hier übergeben kann ist ein String = Key und Value !
+localStorage.was kann als methoden genutz werden?( )
+.setItem() um daten hinzuzufügen --> localStorage.setItem(key: 'name', value: 'Mky')
+.getItem() um daten von der LocalStorage zu holen --> localStorage.getItem(key: 'name') --> ausgabe: Mky
+.removeItem() um daten aus der localeStorage zu entfernen localStorage.removeItem(key: 'name') --> storage Leer weil nur eine datei da Gespeichert wurde
+
+sessionStorage
+die parameter die hier übergeben kann ist ein String = Key und Value !
+WICHTIG: --nachdem Laden wird es gelöscht!
+sessionStorage.was kann als methoden genutz werden?( )
+.setItem() um daten hinzuzufügen --> sessionStorage.setItem(key: 'name', value: 'Mky')
+.getItem() um daten von der sessionStorage zu holen --> sessionStorage.getItem(key: 'name') --> ausgabe: Mky
+.removeItem() um daten aus der sessionStorage zu entfernen sessionStorage.removeItem(key: 'name') --> storage Leer weil nur eine datei da Gespeichert wurde
+
+cookies:
+HINWEIS: in der Console kann man sehen name und value auch, dazu noch den Domain dann der Path wo es erstellt worden ist und Wichtig Expires (man muss den UTCString einsetzen am besten mit JS new DATE())
+document.cookies = 'name=Mky; expires=' + new DATE(2025,0,1).toUTCString() --> "endless" new DATE(9999,0,1).toUTCString()
+document.cookies = 'lastName=Sarte'
+WICHTIG: um es anzuzeugen ist:
+document.cookie wenn man stuffs mit daten arbeiten möchte ist es einfacher localS und sessionS
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+JSON:
+Was ist JSON?
+JSON (JavaScript Object Notation) ist ein Standardformat, um Daten als Text zu speichern und auszutauschen.
+Methoden:
+JSON.stringify(object): Wandelt ein JavaScript-Objekt in einen JSON-String um.
+JSON.parse(string): Wandelt einen JSON-String wieder in ein JavaScript-Objekt um.
+Warum wird das benötigt?
+localStorage kann nur Strings speichern.
+Wenn du also Objekte oder Arrays speichern willst, musst du sie mit JSON.stringify in einen String umwandeln.
+Zum Abrufen wandelst du sie dann mit JSON.parse zurück.
+
+
+Was kann man in JSON speichern:
+Strings:    "Hallo, Wie gehts?"     "Myk"       "I"
+Numbers:    10      1,5     -20
+Booleans:   true    false
+null:       null
+Arrays:     [1,2,3] ["a", "b", "c"]
+Objects:    {"key": "value"}    {"name": "Mky", "age": 35}
+
+Wie erstellt man eine eine JSON:
+man erstellt --> aboutMeData.json
+
+    aboutMeData.json
+{
+    "name":                 "Mky",
+    "LastName":             "Sarte",
+    "age":                  35,
+    "isLearning":       	true,
+    "ProgramLanguage":      ["C", "SQL", "JavaScript"],
+}
+
+
+    catData.json
+    [
+        {
+        "name:                 "Marthy",
+        "LastName":             null,
+        "age":                  "old",
+        "isGrumpy":       	    true,
+        },
+        {
+        "name:                 "Mochi",
+        "LastName":             null,
+        "age":                  "young",
+        "isGrumpy":       	    false,
+        }
+    ]
+
+    ALLE jason files kann man mit JS öffnen und verarbeiten
+
+    wie macht man aus catData.json ein object damit man es verarbeiten kann --> Parse
+    JSON.parse
+
+    console.log(JSON.parse(catData)) dann werden die ARRAYS dargestellt
+    console.log(JSON.parse(catData[1].name))  -> Mochi
+
+
+    JSON.stringify(obj(wie catData), [age](was ich da ausm obj bane möchte))
+
+    wenn ich das noch spezialisieren möchte dann
+
+    function replace (key, value) {
+        if(typeof value === 'string'){
+            return 'string'
+        }else{
+            return val
+        }
+    }
+
+    JASON.stringify(catData, replace)
+
+    mit:
+    JASON.stringify(catData, null, 2)
+    kann ich das ausgeben wie es aussieht 3. parameter bis 10 
+    1. ist das object 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+reduce()
+reduziert die elemente von einem ARRAY zu einem einzigen
+
+const price = [5, 15, 1, 34, 49]
+
+const total = price.reduce()
+
+function sum(previousEl, nextEL) {
+    return previousEl + nextEL
+}
+    console.log(`${total}`) //.toFixed(2) zwei stellen nach komma
+*****************************************************************************************************************************************************************************************************************
+const prices = [4, 8, 15, 16, 23, 42]
+
+const totalPrice = prices.reduce((total, currentPrice) =>{
+   
+    return total + currentPrice
+    }, 0)                                                            // mit der 0 fängt es an = 0 + 4 = 4 + 8 ....
+
+    console.log(totalPrice)
+
+
+const words = ['Hello', ' ', 'ppl!']
+
+
+sonst sentece = words.reduce(result, word) => {
+        return result + word
+    }, '' )
+
+console.log(totalPrice) --> Hello ppl!
+
+
+const fruits = ['apple', 'banana', 'apple', "orange", "banana", "apple"]
+
+const count = fruits.reduce((total, fruit) => {
+    total[fruit] = (total[fruit] || 0) + 1
+    return total
+    }, {})
+
+console.log(count) --> {apple: 3, banana:2 orange: 1}
+*****************************************************************************************************************************************************************************************************************
+
+const grades = [75, 50, 65, 77, 90]
+
+const maximum = grades.reduce(getMax)
+const minimum = grades.reduce(getMin)
+
+function getMax(previousEl, nextEL) {
+    return Math.max(previousEl, nextEL)
+}
+function getMin(previousEl, nextEL) {
+    return Math.min(previousEl, nextEL)
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+map()
+um bestehende Array nicht verändern zu müssen
+--notes: vergiss C und for Looop das hier ist viel einfacher !! muss man das beherrschen
+
+
+const prices = [4, 8, 15, 23, 42]
+const discountPrices = []
+
+//man kann hier auch forEach nutzen 
+
+price.forEach((price, index, array)=>{
+    discountPrices.push(price * 0.5)
+    })
+console.log(discountPrices)
+
+**                                                                                                          **
+const discountPrices = prices.map(price) => { //hier wird nicht gepushed sonder wieder wird was zurückgegeben
+    return price * 0.5                         // .map interessiert es nciht was man zurück gibt es gibt nur die gleiche anzahl an stelle zurück
+    })
+andereSchreibweise:
+const discountPrices = prices.map(price => price * 0.5) // theOneLineArrowFunction 
+
+console.log(prices) 
+console.log(discountPrices) 
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+filter()
+er filter wie der name schon sagt ! wenn man nach einer bestimmten sache sucht dann eine Operation benötig
+
+const products = [
+    {name: "laptop", price: 599, color: "darkBlue"}
+    {name: "handy", price: 700, color: "white"}
+    {name: "tablet", price: 600, color: "green"}
+    {name: "keyboard", price: 40, color: "orange"}
+    {name: "mouse", price: 60, color: "black"}
+]
+
+const affordableProducts = products.filter(product => product.price < 200) // theOneLineArrowFunction 
+const affordableProducts = products.filter(product => product.color === white) // theOneLineArrowFunction 
+const affordableProducts = products.filter(product => product.name.include("phone")) // theOneLineArrowFunction 
+
+const affordableProducts = products.filter(product => {
+    return product.name.include("phone") && product.price < 100
+    })
+
+console.log(affordableProducts) ---> angezeigt werden sachen die unter 200 sind weil das unsere bedingung ist
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+const products = [
+    {name: "latop", price: 499, color:"white", inShoppingCart: true},
+    {name: "handy", price: 499, color:"black", inShoppingCart: false},
+    {name: "tablet", price: 499, color:"orange", inShoppingCart: true},
+    {name: "keyboard", price: 499, color:"green", inShoppingCart: false},
+    {name: "mouse", price: 499, color:"yellow", inShoppingCart: true},
+]
+
+const cartTotal = products.filter(p => p.inShoppingCart).map(p => p.price * 0.5).reduce((total, price) => {
+    return total + price
+    }, 0)
+
+console.log(cartTotal)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+arr.some
+arr.every
+arr.find
+arr.findIndex
+arr.flatMap
+
+trim()
+push()
+
