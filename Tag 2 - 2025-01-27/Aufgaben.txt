@@ -1,0 +1,24 @@
+Neue Aufgaben für Tag 2
+
+Lernziele:
+Mehr über Objekte und Arrays lernen (Erstellen, Zugriff, Iteration).
+Fortgeschrittenere DOM-Manipulation.
+Ein kleines Projekt: Dynamische Begrüßung.
+Aufgaben:
+
+Objekte und Arrays:
+
+Erstelle ein Objekt, das deinen Namen, dein Alter und deine Lieblingsprogrammiersprache enthält.
+Erstelle ein Array von mindestens 5 Zahlen.
+Berechne die Summe aller Zahlen im Array und gib sie aus.
+
+DOM-Manipulation:
+
+Ergänze deine HTML-Datei mit einem <h1>-Element.
+Nutze JavaScript, um den Text in <h1> dynamisch zu ändern (z. B. mit einer Begrüßung wie "Hallo, [Name]!").
+
+
+Mini-Projekt: Dynamische Begrüßung
+
+Erstelle ein Eingabefeld (<input>) und einen Button.
+Wenn der Nutzer seinen Namen eingibt und auf den Button klickt, soll eine Begrüßung im <h1> erscheinen, z. B.: "Hallo, [Name]!".
